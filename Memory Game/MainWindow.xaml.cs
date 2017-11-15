@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Memory_Game
 {
@@ -23,6 +24,34 @@ namespace Memory_Game
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Display display = new Display();
+            display.Show();
+            this.Close();
+
+            int wordCount = Convert.ToInt32(sldUnit.Value);
+            // MessageBox.Show(Convert.ToString(wordCount));
+            string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            // MessageBox.Show(StartUpPath);
+            string lstWords = StartUpPath + @"\words.txt";
+
+            StreamReader r = new StreamReader(lstWords);
+
+            // MessageBox.Show(Convert.ToString(wordCount));
+            string[] wordArr = new string[wordCount];
+            string line;
+
+            for (int i = 0; i < wordCount; i++)
+            {
+                line = r.ReadLine();
+                MessageBox.Show(line);
+                wordArr[i] += line;
+            }
+
+            r.Close();
         }
     }
 }
