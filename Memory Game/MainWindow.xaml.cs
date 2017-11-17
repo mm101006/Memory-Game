@@ -27,10 +27,16 @@ namespace Memory_Game
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int wordCount = Convert.ToInt32(sldUnit.Value);
+            int wordAmount = Convert.ToInt32(sldUnit.Value);
             int interval = Convert.ToInt32(sldInterval.Value);
 
-            Display display = new Display(wordCount, interval);
+            // creating the instance of the class GameParameters passing in 2 parameters 
+
+            GameParameters.Interval = interval;
+            GameParameters.WordCount = wordAmount;
+
+
+            Display display = new Display();
             display.Show();
             this.Close();            
         }

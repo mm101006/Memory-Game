@@ -12,25 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
-using System.Timers;
 
 namespace Memory_Game
 {
     /// <summary>
-    /// Interaction logic for Display.xaml
+    /// Interaction logic for Display.xam
     /// </summary>
     public partial class Display : Window
     {
-        public Display(int wordCount, int interval)
+        public Display()
         {
             InitializeComponent();
-            // Timer 
-            System.Timers.Timer aTimer = new System.Timers.Timer();
-            aTimer.Elapsed += new ElapsedEventHandler(nextWord);
-            int time = interval * 1000;
-            aTimer.Interval = time;
-            aTimer.Enabled = true;
-            
+
             // MessageBox.Show(Convert.ToString(wordCount));
             string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
             // MessageBox.Show(StartUpPath);
@@ -39,31 +32,39 @@ namespace Memory_Game
             StreamReader r = new StreamReader(lstWords);
 
             // MessageBox.Show(Convert.ToString(wordCount));
-            string[] wordArr = new string[wordCount];
-            string line;        
+            string[] wordArr = new string[GameParameters.WordCount];
+            string line;
 
-            int n = 0;
-            while (n < wordCount)
+            for (int i = 0; i < GameParameters.WordCount; i++)
             {
                 line = r.ReadLine();
-                txtDisplay.Text += line;
-                n += 1;
+                wordArr[i] += line;
             }
 
-            //for (int i = 0; i < wordCount; i++)
+            r.Close();
+
+            txtDisplay.Text = wordArr[0];
+            System.Threading.Thread.Sleep(GameParameters.Interval * 1000);
+            txtDisplay.Text = String.Empty;
+            txtDisplay.Text = wordArr[1];
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+           
+
+            //int n = 0;
+            //while (n < GameParameters.WordCount)
             //{
-            //    line = r.ReadLine();
-            //    txtDisplay.Text = line;
-            //    wordArr[i] += line;
+            //    txtDisplay.Text = wordArr[0];
+            //    System.Threading.Thread.Sleep(GameParameters.Interval * 1000);
+            //    n += 1;
             //}
 
-            r.Close();
-        }
 
-        private static void nextWord(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            MessageBox.Show("test");
-        }
 
+
+
+        }
     }
 }
