@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.IO;
+using System.ComponentModel;
+using System.Threading;
+using System.Timers;
+using System.Windows.Threading;
 
 namespace Memory_Game
 {
@@ -20,6 +24,8 @@ namespace Memory_Game
     /// </summary>
     public partial class Display : Window
     {
+        string[] wordArr = new string[GameParameters.WordCount];
+
         public Display()
         {
             InitializeComponent();
@@ -32,7 +38,7 @@ namespace Memory_Game
             StreamReader r = new StreamReader(lstWords);
 
             // MessageBox.Show(Convert.ToString(wordCount));
-            string[] wordArr = new string[GameParameters.WordCount];
+            
             string line;
 
             for (int i = 0; i < GameParameters.WordCount; i++)
@@ -43,26 +49,22 @@ namespace Memory_Game
 
             r.Close();
 
-            txtDisplay.Text = wordArr[0];
-            System.Threading.Thread.Sleep(GameParameters.Interval * 1000);
-            txtDisplay.Text = String.Empty;
-            txtDisplay.Text = wordArr[1];
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-           
-
-            //int n = 0;
-            //while (n < GameParameters.WordCount)
-            //{
-            //    txtDisplay.Text = wordArr[0];
-            //    System.Threading.Thread.Sleep(GameParameters.Interval * 1000);
-            //    n += 1;
-            //}
-
-
-
+            int counter = 0;
+            DispatcherTimer timer = new DispatcherTimer();            
+            timer.Start();
+            timer.Tick += delegate
+            {                
+                counter++;
+                if (counter > wordArr.Length)
+                {
+                    timer.Stop();
+                }
+                else
+                {
+                    label1.Text = wordArr[counter - 1];
+                }
+            };
+            timer.Interval = TimeSpan.FromSeconds(GameParameters.Interval);
 
 
         }

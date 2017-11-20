@@ -10,7 +10,7 @@ namespace Memory_Game
     {
         private static int wordCount = 0;
         private static int interval = 0;
-
+        
         public static int WordCount
         {
             get { return wordCount;  }

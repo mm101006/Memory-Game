@@ -34,7 +34,7 @@ namespace Memory_Game
 
             GameParameters.Interval = interval;
             GameParameters.WordCount = wordAmount;
-
+            
 
             Display display = new Display();
             display.Show();

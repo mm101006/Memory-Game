@@ -8,15 +8,9 @@
         Title="Display" Height="300" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="32*"/>
-            <ColumnDefinition Width="39*"/>
-            <ColumnDefinition Width="16*"/>
-            <ColumnDefinition Width="182*"/>
-            <ColumnDefinition Width="18*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="txtDisplay" HorizontalAlignment="Left" Margin="5,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="170" Width="272" Grid.ColumnSpan="5" Grid.Column="1"/>
         <Canvas Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Left" Height="100" Margin="121,182,-21,-13" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="label1" HorizontalAlignment="Left" Margin="73,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
 
     </Grid>
 </Window>
