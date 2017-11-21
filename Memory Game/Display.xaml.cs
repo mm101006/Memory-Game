@@ -25,6 +25,7 @@ namespace Memory_Game
     public partial class Display : Window
     {
         string[] wordArr = new string[GameParameters.WordCount];
+        static Random _random = new Random();
 
         public Display()
         {
@@ -40,12 +41,33 @@ namespace Memory_Game
             // MessageBox.Show(Convert.ToString(wordCount));
             
             string line;
+            string[] fileArr = new string[GameParameters.TotalWords];
+            bool finished = false;
 
-            for (int i = 0; i < GameParameters.WordCount; i++)
+            int i = 0;
+            while (!finished)
             {
                 line = r.ReadLine();
-                wordArr[i] += line;
+                if (line == null)
+                {
+                    finished = true;
+                }
+                else
+                {
+                    fileArr[i] += line + Environment.NewLine;                
+                }
+                i += 1;
             }
+
+            string[] shuffle = RandomizeStrings(fileArr);
+
+            for (int n = 0; i < GameParameters.WordCount; i++)
+            {
+                line = r.ReadLine();
+                wordArr[n] += line;
+            }
+
+
 
             r.Close();
 
@@ -61,12 +83,45 @@ namespace Memory_Game
                 }
                 else
                 {
-                    label1.Text = wordArr[counter - 1];
+                    label1.Text = shuffle[counter - 1];
                 }
             };
             timer.Interval = TimeSpan.FromSeconds(GameParameters.Interval);
 
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow previousWindow = new MainWindow();
+            previousWindow.Show();
+            this.Close();
+        }        
+
+        static string[] RandomizeStrings(string[] arr)
+        {
+            List<KeyValuePair<int, string>> list =
+                new List<KeyValuePair<int, string>>();
+            // Add all strings from array.
+            // ... Add new random int each time.
+            foreach (string s in arr)
+            {
+                list.Add(new KeyValuePair<int, string>(_random.Next(), s));
+            }
+            // Sort the list by the random number.
+            var sorted = from item in list
+                         orderby item.Key
+                         select item;
+            // Allocate new string array.
+            string[] result = new string[arr.Length];
+            // Copy values to array.
+            int index = 0;
+            foreach (KeyValuePair<int, string> pair in sorted)
+            {
+                result[index] = pair.Value;
+                index++;
+            }
+            // Return copied array.
+            return result;
         }
     }
 }

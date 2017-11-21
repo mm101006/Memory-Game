@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,14 +32,21 @@ namespace Memory_Game
             int interval = Convert.ToInt32(sldInterval.Value);
 
             // creating the instance of the class GameParameters passing in 2 parameters 
-
             GameParameters.Interval = interval;
-            GameParameters.WordCount = wordAmount;
-            
+            GameParameters.WordCount = wordAmount;            
 
             Display display = new Display();
             display.Show();
             this.Close();            
+        }
+
+        private void sldUnit_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
+            var lineCount = File.ReadLines(StartUpPath + @"\words.txt").Count();
+            sldUnit.Maximum = lineCount;
+            int totalWords = lineCount;
+            GameParameters.TotalWords = totalWords;
         }
     }
 }

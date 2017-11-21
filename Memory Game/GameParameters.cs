@@ -10,7 +10,9 @@ namespace Memory_Game
     {
         private static int wordCount = 0;
         private static int interval = 0;
-        
+        private static int totalWords = 0;
+
+
         public static int WordCount
         {
             get { return wordCount;  }
@@ -21,6 +23,12 @@ namespace Memory_Game
         {
             get { return interval; }
             set { interval = value; }
+        }
+
+        public static int TotalWords
+        {
+            get { return totalWords;  }
+            set { totalWords = value; }
         }
     }
 }

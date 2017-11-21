@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Game"
         mc:Ignorable="d"
-        Title="Display" Height="300" Width="300">
-    <Grid>
+        ResizeMode="NoResize"
+        Title="Begin" Height="173" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFAC5E5E">
         <Grid.ColumnDefinitions>
         </Grid.ColumnDefinitions>
         <Canvas Grid.ColumnSpan="2" Grid.Column="4" HorizontalAlignment="Left" Height="100" Margin="121,182,-21,-13" VerticalAlignment="Top" Width="100"/>
-        <TextBlock x:Name="label1" HorizontalAlignment="Left" Margin="73,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+        <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="91" Margin="10,10,0,0" VerticalAlignment="Top" Width="264" CornerRadius="5" Padding="0" Background="#FFDE3030">
+            <TextBlock x:Name="label1" Margin="0,0,0,3" TextWrapping="Wrap" VerticalAlignment="Center" Height="106" FontFamily="Georgia" FontSize="36
+                       " TextAlignment="Center" Padding="0,30,0,0" Foreground="#FFF9FFBF"><Run Text="test"/></TextBlock>
+        </Border>
+        <Button Content="Stop" HorizontalAlignment="Left" Margin="60,106,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" ClickMode="Press" Foreground="#FFF9FFBF" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>
