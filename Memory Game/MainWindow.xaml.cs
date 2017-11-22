@@ -33,7 +33,7 @@ namespace Memory_Game
 
             // creating the instance of the class GameParameters passing in 2 parameters 
             GameParameters.Interval = interval;
-            GameParameters.WordCount = wordAmount;            
+            GameParameters.WordCount = wordAmount;
 
             Display display = new Display();
             display.Show();

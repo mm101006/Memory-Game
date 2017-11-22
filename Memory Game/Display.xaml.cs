@@ -23,13 +23,16 @@ namespace Memory_Game
     /// Interaction logic for Display.xam
     /// </summary>
     public partial class Display : Window
-    {
+    {        
         string[] wordArr = new string[GameParameters.WordCount];
         static Random _random = new Random();
+        
 
         public Display()
         {
             InitializeComponent();
+
+            FillAnswers.Visibility = Visibility.Hidden;
 
             // MessageBox.Show(Convert.ToString(wordCount));
             string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
@@ -67,8 +70,6 @@ namespace Memory_Game
                 wordArr[n] += line;
             }
 
-
-
             r.Close();
 
             int counter = 0;
@@ -80,6 +81,10 @@ namespace Memory_Game
                 if (counter > wordArr.Length)
                 {
                     timer.Stop();
+                    label1.FontSize = int.Parse("24");
+                    label1.Text = "Submit Answers";
+                    Stop.Visibility = Visibility.Hidden;
+                    FillAnswers.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -95,7 +100,15 @@ namespace Memory_Game
             MainWindow previousWindow = new MainWindow();
             previousWindow.Show();
             this.Close();
-        }        
+            
+        }
+
+        private void Button_Click1(object sender, RoutedEventArgs e)
+        {
+            Submit_Answers answers = new Submit_Answers();
+            answers.Show();
+            this.Close();
+        }
 
         static string[] RandomizeStrings(string[] arr)
         {
@@ -123,5 +136,8 @@ namespace Memory_Game
             // Return copied array.
             return result;
         }
+
     }
 }
+
+

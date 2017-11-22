@@ -15,7 +15,8 @@
             <TextBlock x:Name="label1" Margin="0,0,0,3" TextWrapping="Wrap" VerticalAlignment="Center" Height="106" FontFamily="Georgia" FontSize="36
                        " TextAlignment="Center" Padding="0,30,0,0" Foreground="#FFF9FFBF"><Run Text="test"/></TextBlock>
         </Border>
-        <Button Content="Stop" HorizontalAlignment="Left" Margin="60,106,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" ClickMode="Press" Foreground="#FFF9FFBF" HorizontalContentAlignment="Center"/>
+        <Button x:Name="Stop" Content="Stop" HorizontalAlignment="Left" Margin="60,106,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" ClickMode="Press" Foreground="#FFF9FFBF" HorizontalContentAlignment="Center" IsCancel="True"/>
+        <Button x:Name="FillAnswers" Content="Fill in Answers" HorizontalAlignment="Left" Margin="60,106,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click1" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" ClickMode="Press" Foreground="#FFF9FFBF" HorizontalContentAlignment="Center"/>
 
     </Grid>
 </Window>
