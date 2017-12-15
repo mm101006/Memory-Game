@@ -21,13 +21,25 @@ namespace Memory_Game
     {
         public Submit_Answers()
         {
-            InitializeComponent();    
+            InitializeComponent();
+            //foreach (string word in ArrayParameters.RandomWords)
+            //{
+            //    MessageBox.Show(word);
+            //}
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Hi");
+            
+            if (textBox.Text.ToLower().Trim() == ArrayParameters.RandomWords[0].ToLower().Trim())
+            {
+                MessageBox.Show("Correct");
+            }
+            else
+            {
+                MessageBox.Show("Wrong");
+            }           
         }
     }
 }

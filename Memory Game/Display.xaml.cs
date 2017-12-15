@@ -64,6 +64,10 @@ namespace Memory_Game
 
             string[] shuffle = RandomizeStrings(fileArr);
 
+            ArrayParameters.RandomWords = shuffle;
+
+            
+
             for (int n = 0; i < GameParameters.WordCount; i++)
             {
                 line = r.ReadLine();
