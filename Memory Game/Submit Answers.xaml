@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Memory_Game"
         mc:Ignorable="d"
-        Title="Submit_Answers" Height="300" Width="300" WindowStartupLocation="CenterScreen">
-    <Grid x:Name="Menu" Margin="0,0,2,0">
-        <Label Content="Memory Game" HorizontalAlignment="Left" Margin="27,10,0,0" VerticalAlignment="Top" Width="251" FontSize="36" Foreground="White"/>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="88,149,0,0" VerticalAlignment="Top" Width="116" Height="22" Click="button_Click_1"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="88,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        Title="Submit_Answers" Height="231" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FFAC5E5E">
+    <Grid x:Name="Menu" Margin="0,0,2,0" HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Verify" HorizontalAlignment="Left" Margin="68,127,0,0" VerticalAlignment="Top" Width="163" Click="button_Click_1" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" OpacityMask="Black" Height="24" IsDefault="True"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="46,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="textBox1" Height="56" Margin="10,23,0,0" TextWrapping="Wrap" Text="Submit one word, start from the Beginning:" VerticalAlignment="Top" Width="272" Background="#FFAC5E5E" FontSize="18" Foreground="White" HorizontalAlignment="Center" SelectionOpacity="0" BorderBrush="{x:Null}"/>
     </Grid>
 </Window>
