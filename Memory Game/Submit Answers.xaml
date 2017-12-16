@@ -6,13 +6,20 @@
         xmlns:local="clr-namespace:Memory_Game"
         mc:Ignorable="d"
         Title="Submit_Answers" Height="231" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="#FFAC5E5E">
-    <Grid x:Name="Menu" Margin="0,0,2,0" HorizontalAlignment="Center">
+    <Grid x:Name="Menu" Margin="26,0,29,0" HorizontalAlignment="Center" Width="239">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button Content="Verify" HorizontalAlignment="Left" Margin="68,127,0,0" VerticalAlignment="Top" Width="163" Click="button_Click_1" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" OpacityMask="Black" Height="24" IsDefault="True"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="46,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="202"/>
-        <TextBox x:Name="textBox1" Height="56" Margin="10,23,0,0" TextWrapping="Wrap" Text="Submit one word, start from the Beginning:" VerticalAlignment="Top" Width="272" Background="#FFAC5E5E" FontSize="18" Foreground="White" HorizontalAlignment="Center" SelectionOpacity="0" BorderBrush="{x:Null}"/>
+        <Button  Content="Verify" HorizontalAlignment="Left" Margin="21,116,0,0" VerticalAlignment="Top" Width="183" Click="button_Click_1" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" Foreground="#FFF9FFBF" OpacityMask="Black" Grid.Row="1" Height="24" IsDefault="True"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="59,83,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110" Grid.Row="1" TextAlignment="Center"/>
+        <Label x:Name="label" Content="Submit one word, start from the&#xA;beginning:&#xA;" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="210" Foreground="White" Height="73" FontSize="20"/>
+        <Button x:Name="button" Content="Menu" HorizontalAlignment="Left" Margin="21,154,0,0" VerticalAlignment="Top" Width="92"  Click="button_Click" Background="#FFAC5E5E" BorderBrush="Black" BorderThickness="3" Foreground="White" OpacityMask="Black" Grid.Row="1" Height="24"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="118,154,0,0"  ScrollViewer.CanContentScroll="False" VerticalAlignment="Top" Width="85" Loaded="ComboBox_Loaded" IsReadOnly="True" FontSize="12" BorderBrush="#FFAC5E5E" BorderThickness="3" Foreground="#FFAC5E5E" OpacityMask="Black" Height="24" MaxDropDownHeight="100" VerticalContentAlignment="Stretch" Padding="10,5,0,0" Grid.Row="1"/>
+        
     </Grid>
 </Window>

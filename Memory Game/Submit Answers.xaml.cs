@@ -57,5 +57,35 @@ namespace Memory_Game
             CompareAnswer(textBox.Text.ToLower().Trim(), ArrayParameters.RandomWords[count].ToLower().Trim());
                                     
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow previousWindow = new MainWindow();
+            previousWindow.Show();
+            this.Close();
+        }
+
+        private void ComboBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            // ... A List.
+            List<string> data = new List<string>();
+            data.Add("Answers:");
+            int words = 0;
+            while (words < GameParameters.WordCount)
+            {
+                data.Add(words + 1 + ". " + ArrayParameters.RandomWords[words].ToLower().Trim());
+                words += 1;
+            }          
+
+            // ... Get the ComboBox reference.
+            var comboBox = sender as ComboBox;
+
+            // ... Assign the ItemsSource to the List.
+            comboBox.ItemsSource = data;
+
+            // ... Make the first item selected.
+            comboBox.SelectedIndex = 0;
+        }
+
     }
 }
