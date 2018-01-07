@@ -25,8 +25,7 @@ namespace Memory_Game
     public partial class Display : Window
     {        
         string[] wordArr = new string[GameParameters.WordCount];
-        static Random _random = new Random();
-        
+        static Random _random = new Random();        
 
         public Display()
         {
@@ -34,14 +33,10 @@ namespace Memory_Game
 
             FillAnswers.Visibility = Visibility.Hidden;
 
-            // MessageBox.Show(Convert.ToString(wordCount));
             string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
-            // MessageBox.Show(StartUpPath);
             string lstWords = StartUpPath + @"\words.txt";
 
             StreamReader r = new StreamReader(lstWords);
-
-            // MessageBox.Show(Convert.ToString(wordCount));
             
             string line;
             string[] fileArr = new string[GameParameters.TotalWords];
@@ -64,6 +59,8 @@ namespace Memory_Game
 
             string[] shuffle = RandomizeStrings(fileArr);
 
+            ArrayParameters.RandomWords = shuffle;            
+
             for (int n = 0; i < GameParameters.WordCount; i++)
             {
                 line = r.ReadLine();
@@ -82,7 +79,7 @@ namespace Memory_Game
                 {
                     timer.Stop();
                     label1.FontSize = int.Parse("24");
-                    label1.Text = "Submit Answers";
+                    label1.Text = "Click to Fill in Answers";
                     Stop.Visibility = Visibility.Hidden;
                     FillAnswers.Visibility = Visibility.Visible;
                 }
@@ -99,8 +96,7 @@ namespace Memory_Game
         {
             MainWindow previousWindow = new MainWindow();
             previousWindow.Show();
-            this.Close();
-            
+            this.Close();            
         }
 
         private void Button_Click1(object sender, RoutedEventArgs e)

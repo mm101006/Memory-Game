@@ -12,10 +12,9 @@ namespace Memory_Game
         private static int interval = 0;
         private static int totalWords = 0;
 
-
         public static int WordCount
         {
-            get { return wordCount;  }
+            get { return wordCount; }
             set { wordCount = value; }
         }
 
@@ -27,8 +26,13 @@ namespace Memory_Game
 
         public static int TotalWords
         {
-            get { return totalWords;  }
+            get { return totalWords; }
             set { totalWords = value; }
         }
     }
-}
+
+    static class ArrayParameters
+        {
+            public static string[] RandomWords = new string[GameParameters.TotalWords];
+        }
+    }
