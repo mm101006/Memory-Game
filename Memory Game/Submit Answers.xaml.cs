@@ -23,10 +23,11 @@ namespace Memory_Game
         {
             InitializeComponent();
         }
-
+        // below is used to compare user's value to that of the array value
         int count = 0;
         public string CompareAnswer(string txtBoxAnswer,  string arrAnswer)
         {
+            // Trim is used here to remove all leading and trailing white spaces
             if (textBox.Text.ToLower().Trim() == ArrayParameters.RandomWords[count].ToLower().Trim())
             {
                 MessageBoxResult output = MessageBox.Show("Correct");
@@ -52,13 +53,13 @@ namespace Memory_Game
             }
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        private void SubmitAnswer(object sender, RoutedEventArgs e)
         {
             CompareAnswer(textBox.Text.ToLower().Trim(), ArrayParameters.RandomWords[count].ToLower().Trim());
                                     
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void backToMenu(object sender, RoutedEventArgs e)
         {
             MainWindow previousWindow = new MainWindow();
             previousWindow.Show();
@@ -67,7 +68,7 @@ namespace Memory_Game
 
         private void ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
-            // ... A List.
+            // ... A List with all the answers.
             List<string> data = new List<string>();
             data.Add("Answers:");
             int words = 0;

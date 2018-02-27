@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Memory_Game
 {
@@ -28,13 +17,15 @@ namespace Memory_Game
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // wordAmount and interval values are set by the sliders
             int wordAmount = Convert.ToInt32(sldUnit.Value);
             int interval = Convert.ToInt32(sldInterval.Value);
 
-            // creating the instance of the class GameParameters passing in 2 parameters 
+            // Passes Interval and WordCount to the class GameParameters 
             GameParameters.Interval = interval;
             GameParameters.WordCount = wordAmount;
 
+            // Passes the user to the display game screen
             Display display = new Display();
             display.Show();
             this.Close();            
@@ -42,6 +33,7 @@ namespace Memory_Game
 
         private void sldUnit_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            // reads the file words.txt, counts lines, then sets the maximum amount of words that can be selected
             string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
             var lineCount = File.ReadLines(StartUpPath + @"\words.txt").Count();
             sldUnit.Maximum = lineCount;

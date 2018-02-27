@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Memory_Game
+﻿namespace Memory_Game
 {
     static class GameParameters
     {
+        // for class GameParameters three variables are declared
         private static int wordCount = 0;
         private static int interval = 0;
         private static int totalWords = 0;
 
+        // below are properities of the class GameParameters
         public static int WordCount
         {
             get { return wordCount; }

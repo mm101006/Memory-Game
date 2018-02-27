@@ -1,47 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.IO;
-using System.ComponentModel;
-using System.Threading;
-using System.Timers;
 using System.Windows.Threading;
 
 namespace Memory_Game
 {
     /// <summary>
-    /// Interaction logic for Display.xam
+    /// Interaction logic for Display.xaml
     /// </summary>
     public partial class Display : Window
     {        
+        // declares a string array, and creates an instance of the Random class
         string[] wordArr = new string[GameParameters.WordCount];
         static Random _random = new Random();        
 
         public Display()
         {
             InitializeComponent();
-
+            // fill in answers button is hidden from user at start of game
             FillAnswers.Visibility = Visibility.Hidden;
-
+            // navigates to debug directory looking for the file words.txt
             string StartUpPath = System.AppDomain.CurrentDomain.BaseDirectory;
             string lstWords = StartUpPath + @"\words.txt";
-
+            // StreamReader is initialized 
             StreamReader r = new StreamReader(lstWords);
             
             string line;
             string[] fileArr = new string[GameParameters.TotalWords];
             bool finished = false;
-
+            // while loop is used to read each line of the text file, 
+            // if line has a value attach that value to the arrary fileArr
             int i = 0;
             while (!finished)
             {
@@ -52,23 +42,22 @@ namespace Memory_Game
                 }
                 else
                 {
-                    fileArr[i] += line + Environment.NewLine;                
+                    fileArr[i] += line;                
                 }
                 i += 1;
             }
-
-            string[] shuffle = RandomizeStrings(fileArr);
-
-            ArrayParameters.RandomWords = shuffle;
-
+            // RandomWords array of class ArrayParameters is populated by the fileArr,
+            // which is ran through the RandomizeString function
+            ArrayParameters.RandomWords = RandomizeStrings(fileArr);
+            // a for loop then reads through the RandomWords Array
             for (int n = 0; i < GameParameters.WordCount; i++)
             {
                 line = r.ReadLine();
-                wordArr[n] += line;
+                ArrayParameters.RandomWords[n] += line;
             }
 
             r.Close();
-
+            // a Timer is used to flash words on the screen
             int counter = 0;
             DispatcherTimer timer = new DispatcherTimer();            
             timer.Start();
@@ -78,28 +67,28 @@ namespace Memory_Game
                 if (counter > wordArr.Length)
                 {
                     timer.Stop();
-                    label1.FontSize = int.Parse("24");
-                    label1.Text = "Click to Fill in Answers";
+                    wordScreen.FontSize = int.Parse("24");
+                    wordScreen.Text = "Click to Fill in Answers";
                     Stop.Visibility = Visibility.Hidden;
                     FillAnswers.Visibility = Visibility.Visible;
                 }
                 else
                 {
-                    label1.Text = shuffle[counter - 1];
+                    wordScreen.Text = ArrayParameters.RandomWords[counter - 1];
                 }
             };
             timer.Interval = TimeSpan.FromSeconds(GameParameters.Interval);
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void StopButton(object sender, RoutedEventArgs e)
         {
             MainWindow previousWindow = new MainWindow();
             previousWindow.Show();
             this.Close();            
         }
 
-        private void Button_Click1(object sender, RoutedEventArgs e)
+        private void FillAnswersButton(object sender, RoutedEventArgs e)
         {
             Submit_Answers answers = new Submit_Answers();
             answers.Show();
